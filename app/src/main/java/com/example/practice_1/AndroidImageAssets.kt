@@ -65,4 +65,9 @@ class AndroidImageAssets {
         return legs
     }
 
+    @JvmName("getAll1")
+    public fun getAll() : List<Int> {
+        return all as List<Int>
+    }
+
 }
