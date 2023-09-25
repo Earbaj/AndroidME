@@ -34,6 +34,16 @@ class FragmentBodyPart : Fragment() {
         if(mImageIds != null){
             // Set the image resource to the list item at the stored index
             imageView.setImageResource(mImageIds!!.get(mListIndex));
+
+            imageView.setOnClickListener {
+                if(mListIndex < mImageIds!!.size -1) {
+                    mListIndex++;
+                } else {
+                    // The end of list has been reached, so return to beginning index
+                    mListIndex = 0;
+                }
+                imageView.setImageResource(mImageIds!!.get(mListIndex));
+            }
         } else {
             Log.v(TAG, "This fragment has a null list of image id's");
         }
