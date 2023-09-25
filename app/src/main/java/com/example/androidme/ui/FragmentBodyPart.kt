@@ -8,14 +8,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.androidme.R
+import java.util.ArrayList
+
 
 class FragmentBodyPart : Fragment() {
+
+    // Final Strings to store state information about the list of images and list index
+    val IMAGE_ID_LIST = "image_ids"
+    val LIST_INDEX = "list_index"
 
     // Tag for logging
     private val TAG = "BodyPartFragment"
 
     // empty list and variable to store images and index
-    private var mImageIds: List<Int>? = null
+    private var mImageIds: ArrayList<Int>? = null
     private var mListIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +32,11 @@ class FragmentBodyPart : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Load the saved state (the list of images and list index) if there is one
+        if(savedInstanceState != null) {
+            mImageIds = savedInstanceState.getIntegerArrayList(IMAGE_ID_LIST);
+            mListIndex = savedInstanceState.getInt(LIST_INDEX);
+        }
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_body_part, container, false)
 
@@ -54,12 +65,17 @@ class FragmentBodyPart : Fragment() {
     // Setter methods for keeping track of the list images this fragment can display and which image
     // in the list is currently being displayed
 
-    fun setImageIds(imageIds: List<Int>) {
+    fun setImageIds(imageIds: ArrayList<Int>) {
         mImageIds = imageIds
     }
 
     fun setListIndex(index: Int) {
         mListIndex = index
+    }
+
+    override fun onSaveInstanceState(currentState: Bundle) {
+        currentState.putIntegerArrayList(IMAGE_ID_LIST, mImageIds as ArrayList<Int>?)
+        currentState.putInt(LIST_INDEX, mListIndex)
     }
 
 }

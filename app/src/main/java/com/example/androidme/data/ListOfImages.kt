@@ -5,7 +5,7 @@ import com.example.androidme.R
 object ListOfImages {
 
     // list of head images
-    private val heads = listOf(
+    private val heads = arrayListOf(
         R.drawable.head1,
         R.drawable.head2,
         R.drawable.head3,
@@ -20,7 +20,7 @@ object ListOfImages {
         R.drawable.head12
     )
     // list of body images
-    private val bodies = listOf(
+    private val bodies = arrayListOf(
         R.drawable.body1,
         R.drawable.body2,
         R.drawable.body3,
@@ -35,7 +35,7 @@ object ListOfImages {
         R.drawable.body12
     )
     // list of legs images
-    private val legs = listOf(
+    private val legs = arrayListOf(
         R.drawable.legs1,
         R.drawable.legs2,
         R.drawable.legs3,
@@ -51,23 +51,23 @@ object ListOfImages {
     )
 
     // all 3 images in a single list
-    private val all: List<Int> = (heads + bodies + legs)
+    private val all: ArrayList<Int> = ((heads + bodies + legs) as ArrayList<Int>)
 
 
     // custome getter value to get images
-    fun getHeads(): List<Int> {
+    fun getHeads(): ArrayList<Int> {
         return heads
     }
 
-    fun getBodies(): List<Int> {
+    fun getBodies(): ArrayList<Int> {
         return bodies
     }
 
-    fun getLegs(): List<Int> {
+    fun getLegs(): ArrayList<Int> {
         return legs
     }
 
-    fun getAll(): List<Int> {
+    fun getAll(): ArrayList<Int> {
         return all
     }
 }
